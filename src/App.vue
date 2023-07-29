@@ -4,7 +4,13 @@ import Calculator from './components/Calculator.vue'
 
 <template>
   <div>
-    <Calculator msg="Vite + Vue" />
+    <Calculator />
   </div>
 </template>
+
+<style>
+  body{
+    background: #31475e;
+  }
+</style>
 
