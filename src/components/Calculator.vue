@@ -12,7 +12,7 @@
         <div 
           class="text-white text-center m-1 py-3 bg-blue-900 rounded hover:bg-blue-800"
           :class="{'bg-green-600': ['C', '*', '/', '+', '-', '=', '%'].includes(button)}"
-          @click="action(button)"
+          @click="action(String(button))"
         >
           {{ button }}
         </div>
@@ -32,15 +32,15 @@ export default defineComponent({
   data() {
     return {
       calcVal: '' as string,
-      calcBtns: ['C', '%', '=', '+', 7, 8, 9, '-', 4, 5, 6, '*', 1, 2, 3, '/', 0, '.'] as (string | number)[],
+      calcBtns: ['C', '%', '=', '+', 7, 8, 9, '-', 4, 5, 6, '*', 1, 2, 3, '/', 0, '.'] as (string)[],
       operators: null as string | null,
       prevCalcVal: '' as string,
     };
   },
   methods: {
-    action(button: string | number) {
+    action(button: string) {
       if (!isNaN(Number(button)) || button === '.') {
-        this.calcVal += button.toString();
+        this.calcVal += button;
       }
 
       if (button === 'C') {
@@ -51,8 +51,8 @@ export default defineComponent({
         this.calcVal = (Number(this.calcVal) / 100).toString();
       }
 
-      if (['/', '+', '-', '*'].includes(button.toString())) {
-        this.operators = button.toString();
+      if (['/', '+', '-', '*'].includes(button)) {
+        this.operators = button;
         this.prevCalcVal = this.calcVal;
         this.calcVal = '';
       }
