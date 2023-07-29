@@ -8,13 +8,13 @@
 
     <!-- Calculator Buttons -->
     <div class="grid grid-cols-4 gap-1">
-      <div v-for="btn in calcBtns" :key="btn">
+      <div v-for="button in calcBtns" :key="button">
         <div 
           class="text-white text-center m-1 py-3 bg-blue-900 rounded hover:bg-blue-800"
-          :class="{'bg-green-600': ['C', '*', '/', '+', '-', '=', '%'].includes(btn)}"
-          @click="action(btn)"
+          :class="{'bg-green-600': ['C', '*', '/', '+', '-', '=', '%'].includes(button)}"
+          @click="action(button)"
         >
-          {{ btn }}
+          {{ button }}
         </div>
       </div>
     </div>
@@ -38,26 +38,26 @@ export default defineComponent({
     };
   },
   methods: {
-    action(btn: string | number) {
-      if (!isNaN(Number(btn)) || btn === '.') {
-        this.calcVal += btn.toString();
+    action(button: string | number) {
+      if (!isNaN(Number(button)) || button === '.') {
+        this.calcVal += button.toString();
       }
 
-      if (btn === 'C') {
+      if (button === 'C') {
         this.calcVal = '';
       }
 
-      if (btn === '%') {
+      if (button === '%') {
         this.calcVal = (Number(this.calcVal) / 100).toString();
       }
 
-      if (['/', '+', '-', '*'].includes(btn.toString())) {
-        this.operators = btn.toString();
+      if (['/', '+', '-', '*'].includes(button.toString())) {
+        this.operators = button.toString();
         this.prevCalcVal = this.calcVal;
         this.calcVal = '';
       }
 
-      if (btn === '=') {
+      if (button === '=') {
         this.calcVal = eval(this.prevCalcVal + this.operators + this.calcVal).toString();
         this.prevCalcVal = '';
         this.operators = null;
