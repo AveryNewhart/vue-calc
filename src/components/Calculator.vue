@@ -69,17 +69,31 @@ export default defineComponent({
 
 <style scoped>
 .bg-gray-900 {
-  background: #31475e;
+  background: rgb(77, 0, 77);
+  border: 2px solid rgb(77, 0, 77);
+  border-radius: 5px;
 }
+
+.hover\:bg-blue-800 {
+  background: lightcoral;
+}
+
+.bg-blue-900 {
+  background: lightcoral;
+}
+
 
 .hover\:bg-blue-800:hover{
   cursor: pointer;
-  background: #3D5875;
+  background: rgb(77, 0, 77);
 }
 
 .bg-green-600{
-  background: #3fb984;
+  background: turquoise;
+  color: black;
 }
+
+
 </style>
 
 
